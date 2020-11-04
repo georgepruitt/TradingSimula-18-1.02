@@ -4,7 +4,7 @@
 #--------------------------------------------------------------------------------
 #TradingSimula18.py - programmed by George Pruitt
 #Built on the code and ideas from "The Ultimate Algorithmic Tradins System T-Box"
-#Code is broken into sections
+#Code is broken into sections // using new long com names
 #Most sections can and should be ignored
 #Each trading algorithm must be programmed with this template
 #This is the main entry into the platform
