@@ -81,7 +81,6 @@ sysName = 'TF-System#1' #System Name here
 initCapital = 500000
 commission = 50
 
-
 #---------------------------------------------------------------------------------
 # Optional - use this area to create user lists and
 #            lists of indicator classes - include the list in the loop
@@ -179,9 +178,7 @@ for curPortBar in range(barCount,endBarCount+1):
 
         if masterDateList[curPortBar] in marketMonitorList[curMarket].marketData.date:
             curBar = marketMonitorList[curMarket].marketData.date.index(masterDateList[curPortBar])
-#           print("Current Pos Matrix ",myDate[curBar]," ",positionMatrix.posMatrixSize[-numMarkets:])
             numSectorPositions = numPosCurrentSector(sectorList,myComName,myComNameList,positionMatrix.posMatrixSize[-numMarkets:])
-#           print(myComName," ",numSectorPositions)
             numSectorPositions = 0
             mp = 0
             if len(marketMonitorList[curMarket].mp)!=0: mp = marketMonitorList[curMarket].mp[-1]
@@ -225,7 +222,6 @@ for curPortBar in range(barCount,endBarCount+1):
             if mp ==-1 :
                 shortExit = entryPrice[-1] + 3 *dailyATR
                 shortExit = min(shortExit,entryPrice[-1]+ 5000/myBPV)
-#            print(myDate[curBar]," ",stopTrading[curMarket])
             posSize = 1
             if crosses(myClose,buyLevel,1,curBar-1) and mp !=1 :
                 price = myOpen[curBar]
@@ -245,8 +241,6 @@ for curPortBar in range(barCount,endBarCount+1):
                 profit,curShares,trades = bookTrade(exit,ignore,price,myDate[curBar],tradeName,numShares)
                 todaysCTE = profit;barsSinceEntry = 0
                 marketMonitorList[curMarket].setSysMarkTrackingInfo(tradeName,cumuProfit,mp,barsSinceEntry,curShares,trades)
-
-
 #  Short Entry
 #  Okay  Let's put in some logic to create a short position
             if crosses(myClose,shortLevel,-1,curBar-1) and mp !=-1:
@@ -266,7 +260,6 @@ for curPortBar in range(barCount,endBarCount+1):
                 profit,curShares,trades = bookTrade(exit,ignore,price,myDate[curBar],tradeName,numShares)
                 todaysCTE = profit;barsSinceEntry = 0
                 marketMonitorList[curMarket].setSysMarkTrackingInfo(tradeName,cumuProfit,mp,barsSinceEntry,curShares,trades)
-
 
 #----------------------------------------------------------------------------------------------------------------------------
 # - Do not change code below - trade, portfolio accounting - our great idea should stop here
@@ -307,9 +300,7 @@ for j in range(0,numMarkets):
     systemMarket = systemMarketClass()
     systemMarket.setSysMarkInfo(sysName,myComNameList[j],myComLongNameList[j],marketMonitorList[j].tradesList,marketMonitorList[j].equity,initCapital)
     systemMarketList.append(systemMarket)
-#sectors.setSectorsInfo(numSectors,systemMarketList)
 positionMatrix.printPositionMatrix(systemMarketList,portManager)
 portfolio.setPortfolioInfo("PortfolioTest",systemMarketList)
 parseSectors(sectorList,systemMarketList)
-#plotEquityCurve(portfolio)
 calcSystemResults(systemMarketList)
