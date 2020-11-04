@@ -1,3 +1,6 @@
+
+# If using Anthony's TekTite Music - optimization then
+# turn printMonthlyToTerminal to false GPP 11/03/2020
 from systemMarket import systemMarketClass
 from turtleEquity import plotEquityCurve
 from math import sqrt
