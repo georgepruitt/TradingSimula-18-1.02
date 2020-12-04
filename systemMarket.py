@@ -98,12 +98,12 @@ class systemMarketClass(object):
         mean = 0
         if len(tempYearlyRetList) !=0 : mean =sum(tempYearlyRetList) / len(tempYearlyRetList)
         self.avgYearlyReturn = mean
-        if len(tempYearlyRetList) !=0 : mean = sum(tempMonthlyRetList) / len(tempMonthlyRetList)
+        if len(tempMonthlyRetList) !=0 : mean = sum(tempMonthlyRetList) / len(tempMonthlyRetList)
         differences = [x - mean for x in tempMonthlyRetList]
         sq_differences = [d ** 2 for d in differences]
         ssd = sum(sq_differences)
         variance = 0
-        if len(tempYearlyRetList) !=0 :  variance = ssd / ( len(tempMonthlyRetList) - 1)
+        if len(tempMonthlyRetList) !=0 :  variance = ssd / ( len(tempMonthlyRetList) - 1)
         sd = sqrt(variance)
         self.avgMonthlyReturn = mean
         self.avgMonthlyStdDev = sd
